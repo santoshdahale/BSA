@@ -24,8 +24,8 @@ This repository contains Python code for fine-tuning a lightweight transformer-b
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/bytescale-attention-transformer.git
-   cd bytescale-attention-transformer
+   git clone https://github.com/santoshdahale/BSA.git
+   cd BSA
    ```
 2. Install dependencies:
    ```bash
