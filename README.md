@@ -67,6 +67,7 @@ The repository includes two main scripts:
 
 ```
 bytescale-attention-transformer/
+├── improved_bsa_transformer.py   # ByteScale Attention (BSA) implementation and comparison with current SoftMax based implementation.
 ├── text_to_sql_finetune.py       # Fine-tuning for Text-to-SQL
 ├── natural_wonders_finetune.py   # Fine-tuning for Natural Wonders
 ├── README.md                     # This file
@@ -112,4 +113,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contact
 
-For issues or questions, open a GitHub issue or contact [your-email@example.com](mailto:your-email@example.com).
+For issues or questions, open a GitHub issue or contact [santosh.dahale@gmail.com](mailto:santosh.dahale@gmail.com).
