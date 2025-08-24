@@ -331,4 +331,4 @@ Memory reduction: 30.00% (target ~29%)
 - DeepSeek’s MoE and MLA can be further integrated into BSA for larger-scale experiments, potentially using frameworks like DeepSpeed for distributed training.
 - Test on GPU with `torch.profiler` to verify memory savings and optimize PTX-level kernels for 7-bit ops.
 
-These implementations leverage DeepSeek’s memory-efficient techniques to enhance BSA, achieving your specified memory reduction targets while maintaining performance. Let me know if you’d like to scale this up or test specific components!
+These implementations leverage DeepSeek’s memory-efficient techniques to enhance BSA, achieving your specified memory reduction targets while maintaining performance. 
