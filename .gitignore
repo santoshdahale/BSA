@@ -1,0 +1,17 @@
+__pycache__
+checkpoints
+*.pt
+*.pth
+*.log
+*.csv
+*.json
+*.zip
+.DS_Store
+.vscode
+.idea
+env/
+venv/
+*.egg-info/
+dist/
+build/
+*.iml
