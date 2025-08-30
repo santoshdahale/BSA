@@ -42,6 +42,7 @@ class EnhancedBSA(nn.Module):
         max_k: int = 16,
         alpha: float = 0.1,
         hybrid_threshold: float = 0.5,
+    use_int_mm: bool = False,
     ) -> None:
         super().__init__()
         self.min_k = min_k
@@ -51,6 +52,7 @@ class EnhancedBSA(nn.Module):
         self.gamma = nn.Parameter(torch.tensor(256.0))
         self.hybrid_threshold = hybrid_threshold
         self.latent_dim = max(1, head_size // 2)
+    self.use_int_mm = use_int_mm
 
         # small learned projection layers for the MLA-like path
         self._proj_to_latent = nn.Linear(block_size, self.latent_dim)
@@ -108,11 +110,21 @@ class EnhancedBSA(nn.Module):
         # symmetric quantization around 0
         qmax = 2 ** (bits - 1) - 1
         max_val = weights.abs().max().clamp(min=1e-9)
-        scale = max_val / float(qmax)
-        # quantize to int and store as int8
-        q = torch.round(weights / scale).clamp(-qmax, qmax).to(torch.int8)
-        # dequantize back to float for use in matmul
-        dq = q.to(torch.float32) * scale
+        scale_w = max_val / float(qmax)
+        # quantize weights (int representation)
+        q_w = torch.round(weights / scale_w).clamp(-qmax, qmax).to(torch.int32)
+
+        if self.use_int_mm:
+            # In integer-mm mode we expect the downstream matmul to be done in integer domain.
+            # Return quantized int32 weights and its scale so the caller can perform int matmul.
+            # We return a tuple (q_w, scale_w) packed into a float tensor placeholder: not ideal
+            # but callers in this repo (Head) will handle integer-mm if present.
+            # To keep the API consistent we attach scales as attributes on the tensor via a wrapper dict.
+            # We'll return a small dict-like object encoded as a tuple: (q_w, scale_w)
+            return q_w, float(scale_w)
+
+        # dequantize back to float for use in float matmul
+        dq = q_w.to(torch.float32) * scale_w
         return dq
 
 
