@@ -1,0 +1,26 @@
+# Finetune configuration for BSA experiments
+use_hf: false          # set true to use Hugging Face datasets/tokenizer
+hf_dataset: code_search_net
+hf_subset: python
+tokenizer_name: gpt2
+device: cpu
+seed: 1337
+
+model:
+  n_embd: 128
+  block_size: 128
+
+training:
+  epochs: 1
+  batch_size: 4
+  steps_per_epoch: 20
+  lr: 3e-4
+  checkpoint_dir: checkpoints
+
+logging:
+  log_dir: runs
+  tb: true
+
+deepspeed:
+  enabled: false
+  config: deepspeed_config.json

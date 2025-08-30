@@ -27,10 +27,10 @@ This repository contains Python code for fine-tuning a lightweight transformer-b
    git clone https://github.com/santoshdahale/BSA.git
    cd BSA
    ```
-2. Install dependencies:
-   ```bash
-   pip install torch datasets
-   ```
+2. Install all dependencies (for full functionality including Hugging Face and TensorBoard):
+  ```bash
+  pip install torch datasets transformers tokenizers tensorboard tqdm pytest pyyaml
+  ```
 3. (Optional) Enable Developer Mode on Windows for symlink support, or set:
    ```bash
    export HF_HUB_DISABLE_SYMLINKS_WARNING=1
