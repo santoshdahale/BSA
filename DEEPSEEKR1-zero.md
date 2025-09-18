@@ -1,6 +1,6 @@
-self learning ai
+# self learning ai based on Deepseek V3 Base.
 
-Yes, absolutely! The concept you're referring to is a fascinating aspect of modern AI development, and the DeepSeek-R1 paper you found interesting on X touches on this idea. Let me break it down for you.
+The DeepSeek-R1 paper you found interesting on X touches on this idea. Let me break it down for you.
 
 ### AI Training Other AI: The Basics
 Traditionally, AI models, especially large language models (LLMs) like those developed by OpenAI or DeepSeek, are trained using human-annotated data or supervised learning, where humans provide examples and correct answers. However, the DeepSeek-R1 approach takes a different path by leveraging **reinforcement learning (RL)**, where an AI model can essentially "train itself" or improve another AI model with minimal human intervention. Here's how it works in the context of DeepSeek-R1:
